@@ -1,16 +1,10 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: asdf
-spec:
-  destination:
-    name: ''
-    namespace: asdf
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: ''
-    repoURL: 'https://prometheus-community.github.io/helm-charts'
-    targetRevision: 58.4.0
-    chart: kube-prometheus-stack
-  sources: []
-  project: default
+project: default
+source:
+  repoURL: 'https://prometheus-community.github.io/helm-charts'
+  targetRevision: 58.4.0
+  chart: kube-prometheus-stack
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: asdf
+syncPolicy:
+  automated: {}
