@@ -14,7 +14,3 @@ spec:
     chart: kube-prometheus-stack
   sources: []
   project: default
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
