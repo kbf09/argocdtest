@@ -1,17 +1,20 @@
-project: default
-source:
-  repoURL: 'https://prometheus-community.github.io/helm-charts'
-  targetRevision: 16.11.0
-  helm:
-    valueFiles:
-      - values.yaml
-    parameters:
-      - name: prometheusOperator.admissionWebhooks.failurePolicy
-        value: Ignore
-  chart: kube-prometheus-stack
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: prometheus-community
-syncPolicy:
-  syncOptions:
-    - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: asdf
+spec:
+  destination:
+    name: ''
+    namespace: asdf
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ''
+    repoURL: 'https://prometheus-community.github.io/helm-charts'
+    targetRevision: 58.4.0
+    chart: kube-prometheus-stack
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
