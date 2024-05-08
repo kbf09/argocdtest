@@ -4,7 +4,7 @@ metadata:
   name: prometheus-crd
   namespace: asdff
 spec:
-  project: asdffff
+  project: default
   source:
     repoURL: https://github.com/prometheus-community/helm-charts.git
     path: charts/kube-prometheus-stack/charts/crds/
