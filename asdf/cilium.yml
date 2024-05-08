@@ -48,15 +48,6 @@ spec:
               enabled: true
               labels:
                 release: prometheus
-          tls:
-            enabled: true
-            auto:
-              enabled: true
-              method: certmanager
-              certManagerIssuerRef:
-                group: cert-manager.io
-                kind: ClusterIssuer
-                name: ca-issuer
         operator:
           prometheus:
             enabled: true
