@@ -35,7 +35,6 @@ spec:
         hubble:
           enabled: true
           metrics:
-            trustCRDsExist: true
             enabled:
               - dns:query;ignoreAAAA
               - drop:sourceContext=identity;destinationContext=identity
@@ -45,13 +44,8 @@ spec:
               - httpV2:exemplars=true;labelsContext=source_ip,source_namespace,source_workload,destination_ip,destination_namespace,destination_workload,traffic_direction
               - policy:sourceContext=app|workload-name|pod|reserved-identity;destinationContext=app|workload-name|pod|dns|reserved-identity;labelsContext=source_namespace,destination_namespace
             enableOpenMetrics: true
-            serviceMonitor:
-              enabled: true
-              labels:
-                release: kube-prometheus-stack
         operator:
           prometheus:
-            trustCRDsExist: true
             enabled: true
             serviceMonitor:
               enabled: true
@@ -62,10 +56,6 @@ spec:
         prometheus:
           enabled: true
           trustCRDsExist: true
-          serviceMonitor:
-            enabled: true
-            labels:
-              release: kube-prometheus-stack
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
