@@ -16,7 +16,6 @@
 #     helm:
 #       values: |
 #           loki:
-#             auth_enabled: false
 #             image:
 #               tag: 2.9.3
 #   syncPolicy:
