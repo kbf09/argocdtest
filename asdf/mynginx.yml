@@ -37,6 +37,7 @@ spec:
     targetRevision: 58.4.0
     chart: kube-prometheus-stack
     helm:
+      skipCrds: true
       releaseName: kube-prometheus-stack
   sources: []
   project: default
