@@ -31,8 +31,6 @@ spec:
             enableOpenMetrics: true
             serviceMonitor:
               enabled: true
-              labels:
-                release: prometheus
         operator:
           prometheus:
             enabled: true
