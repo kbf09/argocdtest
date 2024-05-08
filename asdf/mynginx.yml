@@ -4,7 +4,7 @@ metadata:
   name: prometheus-crd
   namespace: asdff
 spec:
-  project: default
+  project: asdffff
   source:
     repoURL: https://github.com/prometheus-community/helm-charts.git
     path: charts/kube-prometheus-stack/charts/crds/
@@ -19,8 +19,9 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
-    - Replace=true
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - Replace=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
