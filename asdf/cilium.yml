@@ -35,6 +35,7 @@ spec:
         hubble:
           enabled: true
           metrics:
+            trustCRDsExist: true
             enabled:
               - dns:query;ignoreAAAA
               - drop:sourceContext=identity;destinationContext=identity
@@ -50,6 +51,7 @@ spec:
                 release: kube-prometheus-stack
         operator:
           prometheus:
+            trustCRDsExist: true
             enabled: true
             serviceMonitor:
               enabled: true
@@ -73,3 +75,5 @@ spec:
       selfHeal: true
     syncOptions:
       - ServerSideApply=true
+
+# https://github.com/prometheus-operator/kube-prometheus/issues/1392
