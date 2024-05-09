@@ -74,6 +74,7 @@ spec:
                   url: http://kube-prometheus-stack-alertmanager.kube-system:9093
                   jsonData:
                     implementation: prometheus
+                    handleGrafanaManagedAlerts: false
         prometheus:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
