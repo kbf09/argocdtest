@@ -39,14 +39,14 @@ spec:
             serviceMonitor:
               enabled: true
               labels:
-                release: kube-prometheus-stack
+                app: kube-prometheus-stack
         operator:
           prometheus:
             enabled: true
             serviceMonitor:
               enabled: true
               labels:
-                release: kube-prometheus-stack
+                app: kube-prometheus-stack
           pprof:
             enabled: true
         prometheus:
@@ -55,7 +55,7 @@ spec:
           serviceMonitor:
               enabled: true
               labels:
-                release: kube-prometheus-stack
+                app: kube-prometheus-stack
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
