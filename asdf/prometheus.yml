@@ -72,7 +72,8 @@ spec:
                 - name: Alertmanager
                   type: alertmanager
                   url: http://kube-prometheus-stack-alertmanager.kube-system:9093
-                  implementation: prometheus
+                  jsonData:
+                    implementation: prometheus
         prometheus:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
