@@ -12,7 +12,7 @@ spec:
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: asdff
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true
@@ -29,7 +29,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: asdff
+    namespace: kube-system
     server: 'https://kubernetes.default.svc'
   source:
     path: ''
@@ -54,7 +54,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: grafana-server-ingress
-  namespace: asdff
+  namespace: kube-system
 spec:
   ingressClassName: nginx
   rules:
