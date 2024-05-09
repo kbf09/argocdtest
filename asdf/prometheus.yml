@@ -70,9 +70,9 @@ spec:
                   url: http://loki.asdff.svc.cluster.local:3100
                   isDefault: false
                 - name: Alertmanager
-                  type: Alertmanager
+                  type: alertmanager
                   url: http://kube-prometheus-stack-alertmanager.kube-system:9093
-                  implementation: Prometheus
+                  implementation: prometheus
         prometheus:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
