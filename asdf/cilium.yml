@@ -6,7 +6,7 @@ spec:
   ignoreDifferences:
   - group: apps
     kind: ServiceMonitor
-    name: hubble
+    name: monitoring.coreos.com/ServiceMonitor/kube-system/hubble
   project: default
   source:
     chart: cilium
