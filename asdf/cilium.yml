@@ -11,27 +11,11 @@ spec:
     helm:
       releaseName: cilium
       values: |
+        image:
+          pullPolicy: IfNotPresent
         kubeProxyReplacement: true
-        k8sServiceHost: 192.168.32.100 # modify it if necessary
-        k8sServicePort: 8443
-        bgpControlPlane:
-          enabled: true
-        pprof:
-          enabled: true
-        loadBalancer:
-          algorithm: maglev
-        routingMode: native
-        bpf:
-          masquerade: true
-        ipv4:
-          enabled: true
-        ipv4NativeRoutingCIDR: "10.96.128.0/18" # modify it if necessary
         ipam:
-          operator:
-            # -- IPv4 CIDR list range to delegate to individual nodes for IPAM.
-            clusterPoolIPv4PodCIDRList: ["10.96.128.0/18"] # modify it if necessary
-            # -- IPv4 CIDR mask size to delegate to individual nodes for IPAM.
-            clusterPoolIPv4MaskSize: 24
+          mode: kubernetes
         hubble:
           enabled: true
           metrics:
