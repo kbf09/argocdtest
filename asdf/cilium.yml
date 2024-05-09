@@ -7,8 +7,8 @@ spec:
   - group: apps
     kind: ServiceMonitor
     namespace: kube-system
-    jsonPointers:
-    - /spec/endpoints/relabelings/action
+    jqPathExpressions:
+    - .spec.endpoints.relabelings.action
   project: default
   source:
     chart: cilium
