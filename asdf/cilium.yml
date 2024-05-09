@@ -17,6 +17,8 @@ spec:
         ipam:
           mode: kubernetes
         hubble:
+          relay:
+            enabled: true
           enabled: true
           metrics:
             enabled:
