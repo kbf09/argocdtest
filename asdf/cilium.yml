@@ -7,7 +7,7 @@ spec:
   - group: apps
     kind: ServiceMonitor
     jsonPointers:
-    - /spec/endpoints/relabelings
+    - /spec/endpoints/relabelings[]
   project: default
   source:
     chart: cilium
