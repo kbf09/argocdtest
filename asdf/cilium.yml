@@ -13,7 +13,6 @@ spec:
       values: |
         image:
           pullPolicy: IfNotPresent
-        kubeProxyReplacement: true
         ipam:
           mode: kubernetes
         hubble:
