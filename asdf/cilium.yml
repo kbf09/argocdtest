@@ -3,6 +3,11 @@ kind: Application
 metadata:
   name: cilium
 spec:
+  ignoreDifferences:
+  - group: apps
+    kind: ServiceMonitor
+    jsonPointers:
+    - /spec/endpoints/relabelings
   project: default
   source:
     chart: cilium
