@@ -6,6 +6,7 @@ spec:
   ignoreDifferences:
   - group: apps
     kind: ServiceMonitor
+    name: hubble
     jsonPointers:
     - /spec/endpoints/relabelings[]
   project: default
