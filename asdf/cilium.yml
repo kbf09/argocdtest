@@ -17,9 +17,9 @@ spec:
         ipam:
           mode: kubernetes
         hubble:
+          enabled: true
           relay:
             enabled: true
-          enabled: true
           metrics:
             enabled:
               - dns:query;ignoreAAAA
@@ -32,17 +32,24 @@ spec:
             enableOpenMetrics: true
             serviceMonitor:
               enabled: true
+              labels:
+                release: kube-prometheus-stack
         operator:
           prometheus:
             enabled: true
             serviceMonitor:
               enabled: true
+              labels:
+                release: kube-prometheus-stack
           pprof:
             enabled: true
         prometheus:
           enabled: true
+          trustCRDsExist: true
           serviceMonitor:
               enabled: true
+              labels:
+                release: kube-prometheus-stack
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
