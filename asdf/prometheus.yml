@@ -40,6 +40,35 @@ spec:
       skipCrds: true
       releaseName: kube-prometheus-stack
       values: |
+        grafana:
+          sidecar:
+            datasources:
+              enabled: false
+              defaultDatasourceEnabled: false
+              isDefaultDatasource: false
+          defaultDashboardsTimezone: Asia/Tokyo
+          plugins:
+            - grafana-piechart-panel
+            - isovalent-hubble-datasource
+            - grafana-sentry-datasource
+          grafana.ini:
+            date_formats:
+              default_timezone: Asia/Tokyo
+          persistence:
+            enabled: true
+            size: 10Gi
+          datasources:
+            datasources.yaml:
+              apiVersion: 1
+              datasources:
+                - name: Prometheus
+                  type: prometheus
+                  url: http://kube-prometheus-stack-prometheus.kube-system:9090
+                  isDefault: true
+                - name: Loki
+                  type: loki
+                  url: http://loki.asdff.svc.cluster.local:3100
+                  isDefault: false
         prometheus:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
