@@ -42,7 +42,7 @@ spec:
       values: |
         prometheus:
           prometheusSpec:
-            serviceMonitorSelectorNilUsesHelmValue: false
+            serviceMonitorSelectorNilUsesHelmValues: false
   sources: []
   project: default
   syncPolicy:
