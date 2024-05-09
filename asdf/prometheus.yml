@@ -39,6 +39,10 @@ spec:
     helm:
       skipCrds: true
       releaseName: kube-prometheus-stack
+      values: |
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelectorNilUsesHelmValue: false
   sources: []
   project: default
   syncPolicy:
