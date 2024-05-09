@@ -39,7 +39,6 @@ spec:
             enabled: true
         prometheus:
           enabled: true
-          trustCRDsExist: true
           serviceMonitor:
               enabled: true
   destination:
