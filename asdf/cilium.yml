@@ -6,7 +6,9 @@ spec:
   ignoreDifferences:
   - group: apps
     kind: ServiceMonitor
-    name: monitoring.coreos.com/ServiceMonitor/kube-system/hubble
+    namespace: kube-system
+    jsonPointers:
+    - /spec/endpoints/relabelings[]
   project: default
   source:
     chart: cilium
