@@ -7,8 +7,6 @@ spec:
   - group: apps
     kind: ServiceMonitor
     name: hubble
-    jsonPointers:
-    - /spec
   project: default
   source:
     chart: cilium
