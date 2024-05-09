@@ -31,6 +31,10 @@ spec:
         operator:
           prometheus:
             enabled: true
+            serviceMonitor:
+              enabled: true
+              labels:
+                release: kube-prometheus-stack
           pprof:
             enabled: true
         prometheus:
