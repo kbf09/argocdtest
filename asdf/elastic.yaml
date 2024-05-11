@@ -23,5 +23,25 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
       - Replace=true
-
-# https://github.com/prometheus-operator/kube-prometheus/issues/1392
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eck-operator
+spec:
+  project: default
+  source:
+    chart: eck-operator
+    repoURL: https://helm.elastic.co/
+    targetRevision: 2.12.1
+    helm:
+      releaseName: eck-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: elasticsearch
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
