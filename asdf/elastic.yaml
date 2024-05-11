@@ -3,21 +3,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elasticsearch
+  name: eck-operator-crds
 spec:
-  destination:
-    namespace: elasticsearch-crd
-    server: https://kubernetes.default.svc
   project: default
   source:
-    path: eck-operator-crds
-    repoURL: https://helm.elastic.co
+    chart: eck-operator-crds
+    repoURL: https://helm.elastic.co/
     targetRevision: 2.12.1
+    helm:
+      releaseName: eck-operator-crds
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: elasticsearch
   syncPolicy:
-    automated: 
+    automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
       - Replace=true
+
+# https://github.com/prometheus-operator/kube-prometheus/issues/1392
