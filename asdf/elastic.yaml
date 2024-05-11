@@ -191,6 +191,9 @@ spec:
             metrics:
               elasticsearchRefs:
               - name: elasticsearch
+            logs:
+              elasticsearchRefs:
+              - name: elasticsearch
           # This is required to be able to set the logstash
           # output of beats in a consistent manner.
           fullnameOverride: "logstash-ls-beats"
