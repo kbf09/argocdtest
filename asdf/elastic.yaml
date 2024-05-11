@@ -227,8 +227,7 @@ spec:
                   ports:
                     - port: 31111
                       name: "logstash"
-                      protocol: TCP
-                      targetPort: 5044
+                      protocol: "TCP"
         eck-beats:
           enabled: true
           name: metricbeat
