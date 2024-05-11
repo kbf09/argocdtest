@@ -38,6 +38,8 @@ spec:
       releaseName: eck-operator
       values: |
         installCRDs: false
+        webhook:
+          enabled:: false
         
   destination:
     server: https://kubernetes.default.svc
