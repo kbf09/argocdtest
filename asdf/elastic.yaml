@@ -223,10 +223,10 @@ spec:
             - name: beats
               service:
                 spec:
-                  type: ClusterIP
+                  type: NodePort
                   ports:
-                    - port: 5044
-                      name: "filebeat"
+                    - port: 31111
+                      name: "logstash"
                       protocol: TCP
                       targetPort: 5044
         eck-beats:
