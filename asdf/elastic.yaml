@@ -188,43 +188,7 @@ spec:
             elasticsearchRefs:
             - name: elasticsearch
         
-        eck-logstash:
-          enabled: true
-          count:2
-          # This is required to be able to set the logstash
-          # output of beats in a consistent manner.
-          fullnameOverride: "logstash-ls-beats"
-          elasticsearchRefs:
-            # This clusterName is required to match the environment variables
-            # used in the below config.string output section.
-            - name: elasticsearch
-          pipelines:
-            - pipeline.id: main
-              config.string: |
-                input {
-                  tcp {
-                    port => 5044
-                    codec => json
-                  }
-                }
-                output {
-                  elasticsearch {
-                    hosts => [ "${ECK_ES_HOSTS}" ]
-                    user => "${ECK_ES_USER}"
-                    password => "${ECK_ES_PASSWORD}"
-                    ssl_certificate_authorities => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
-                  }
-                }
-          services:
-            - name: beats
-              service:
-                spec:
-                  type: ClusterIP
-                  ports:
-                    - port: 5044
-                      name: "filebeat"
-                      protocol: TCP
-                      targetPort: 5044
+
 
   destination:
     server: https://kubernetes.default.svc
