@@ -45,3 +45,27 @@ spec:
       selfHeal: true
     syncOptions:
       - ServerSideApply=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eck-stack
+spec:
+  project: default
+  source:
+    chart: eck-stack
+    repoURL: https://helm.elastic.co/
+    targetRevision: 0.10.0
+    helm:
+      releaseName: eck-stack
+      valueFiles:
+      - https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.12/deploy/eck-stack/examples/logstash/basic-eck.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: elasticsearch
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
