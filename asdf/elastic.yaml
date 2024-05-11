@@ -225,7 +225,8 @@ spec:
                 spec:
                   type: NodePort
                   ports:
-                    - port: 5044
+                    - port: 31111
+                      targetPort: 5044
                       nodeport: 31111
                       name: "logstash"
                       protocol: "TCP"
