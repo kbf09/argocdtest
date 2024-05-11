@@ -1,69 +1,69 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cilium
-spec:
-#   ignoreDifferences:
-#   - group: apps
-#     kind: ServiceMonitor
-#     namespace: kube-system
-#     jqPathExpressions:
-#     - .spec.endpoints.relabelings.action
-  project: default
-  source:
-    chart: cilium
-    repoURL: https://helm.cilium.io/
-    targetRevision: 1.15.4
-    helm:
-      releaseName: cilium
-      values: |
-        image:
-          pullPolicy: IfNotPresent
-        kubeProxyReplacement: true
-        ipam:
-          mode: kubernetes
-        hubble:
-          enabled: true
-          relay:
-            enabled: true
-          metrics:
-            enabled:
-              - dns:query;ignoreAAAA
-              - drop:sourceContext=identity;destinationContext=identity
-              - tcp
-              - flow
-              - icmp
-              - httpV2:exemplars=true;labelsContext=source_ip,source_namespace,source_workload,destination_ip,destination_namespace,destination_workload,traffic_direction
-              - policy:sourceContext=app|workload-name|pod|reserved-identity;destinationContext=app|workload-name|pod|dns|reserved-identity;labelsContext=source_namespace,destination_namespace
-            enableOpenMetrics: true
-            serviceMonitor:
-              enabled: true
-              labels:
-                app: kube-prometheus-stack
-        operator:
-          prometheus:
-            enabled: true
-            serviceMonitor:
-              enabled: true
-              labels:
-                app: kube-prometheus-stack
-          pprof:
-            enabled: true
-        prometheus:
-          enabled: true
-          trustCRDsExist: true
-          serviceMonitor:
-              enabled: true
-              labels:
-                app: kube-prometheus-stack
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: monitoring
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
-    syncOptions:
-      - ServerSideApply=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cilium
+# spec:
+# #   ignoreDifferences:
+# #   - group: apps
+# #     kind: ServiceMonitor
+# #     namespace: kube-system
+# #     jqPathExpressions:
+# #     - .spec.endpoints.relabelings.action
+#   project: default
+#   source:
+#     chart: cilium
+#     repoURL: https://helm.cilium.io/
+#     targetRevision: 1.15.4
+#     helm:
+#       releaseName: cilium
+#       values: |
+#         image:
+#           pullPolicy: IfNotPresent
+#         kubeProxyReplacement: true
+#         ipam:
+#           mode: kubernetes
+#         hubble:
+#           enabled: true
+#           relay:
+#             enabled: true
+#           metrics:
+#             enabled:
+#               - dns:query;ignoreAAAA
+#               - drop:sourceContext=identity;destinationContext=identity
+#               - tcp
+#               - flow
+#               - icmp
+#               - httpV2:exemplars=true;labelsContext=source_ip,source_namespace,source_workload,destination_ip,destination_namespace,destination_workload,traffic_direction
+#               - policy:sourceContext=app|workload-name|pod|reserved-identity;destinationContext=app|workload-name|pod|dns|reserved-identity;labelsContext=source_namespace,destination_namespace
+#             enableOpenMetrics: true
+#             serviceMonitor:
+#               enabled: true
+#               labels:
+#                 app: kube-prometheus-stack
+#         operator:
+#           prometheus:
+#             enabled: true
+#             serviceMonitor:
+#               enabled: true
+#               labels:
+#                 app: kube-prometheus-stack
+#           pprof:
+#             enabled: true
+#         prometheus:
+#           enabled: true
+#           trustCRDsExist: true
+#           serviceMonitor:
+#               enabled: true
+#               labels:
+#                 app: kube-prometheus-stack
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: monitoring
+#   syncPolicy:
+#     automated:
+#       prune: false
+#       selfHeal: false
+#     syncOptions:
+#       - ServerSideApply=true
 
-# https://github.com/prometheus-operator/kube-prometheus/issues/1392
+# # https://github.com/prometheus-operator/kube-prometheus/issues/1392
