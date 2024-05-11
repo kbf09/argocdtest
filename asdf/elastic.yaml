@@ -1,0 +1,23 @@
+# https://blog.pinfort.me/posts/myhome-elastic-cloud-on-kubernetes/
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elasticsearch
+spec:
+  destination:
+    namespace: elasticsearch
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: eck-operator-crds
+    repoURL: https://helm.elastic.co
+    targetRevision: 2.12.1
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - Replace=true
