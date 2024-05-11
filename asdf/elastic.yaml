@@ -38,12 +38,6 @@ spec:
       releaseName: eck-operator
       values: |
         installCRDs: false
-        createClusterScopedResources: false
-        config:
-          validateStorageClass: false
-        webhook:
-          enabled: false
-        
         
   destination:
     server: https://kubernetes.default.svc
