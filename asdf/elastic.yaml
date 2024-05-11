@@ -225,11 +225,11 @@ spec:
                 spec:
                   type: NodePort
                   ports:
-                    - port: 31111
-                      targetPort: 5044
-                      nodeport: 31111
+                    - nodePort: 31111
+                      port: 5044
                       name: "logstash"
-                      protocol: "TCP"
+                      protocol: TCP
+                      
         eck-beats:
           enabled: true
           name: metricbeat
