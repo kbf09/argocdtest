@@ -14,7 +14,7 @@ spec:
       releaseName: eck-operator-crds
   destination:
     server: https://kubernetes.default.svc
-    namespace: elasticsearch
+    namespace: elastic-stack
   syncPolicy:
     automated:
       prune: true
@@ -38,7 +38,7 @@ spec:
       releaseName: eck-operator
   destination:
     server: https://kubernetes.default.svc
-    namespace: elasticsearch
+    namespace: elastic-stack
   syncPolicy:
     automated:
       prune: true
@@ -59,10 +59,10 @@ spec:
     helm:
       releaseName: eck-stack
       valueFiles:
-      - https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.12/deploy/eck-stack/examples/logstash/basic-eck.yaml
+      - https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.12/deploy/eck-stack/examples/agent/fleet-agents.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: elasticsearch
+    namespace: elastic-stack
   syncPolicy:
     automated:
       prune: true
