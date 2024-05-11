@@ -238,7 +238,7 @@ spec:
             elasticsearchRef:
               name: elasticsearch
             kibanaRef:
-              name: elasticsearch
+              name: kibana
             config:
               # Since filebeat is used in the default values, this needs to be removed with an empty list. 
               filebeat.inputs: []
