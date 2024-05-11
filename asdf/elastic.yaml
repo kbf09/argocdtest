@@ -193,7 +193,8 @@ spec:
           elasticsearchRefs:
             # This clusterName is required to match the environment variables
             # used in the below config.string output section.
-            - name: elasticsearch
+            - clusterName: prod-es
+              name: elasticsearch
           pipelines:
             - pipeline.id: main
               config.string: |
