@@ -36,6 +36,15 @@ spec:
     targetRevision: 2.12.1
     helm:
       releaseName: eck-operator
+      value: |
+        installCRDs: false
+        createClusterScopedResources: false
+        config:
+          validateStorageClass: false
+        webhook:
+          enabled: false
+        
+        
   destination:
     server: https://kubernetes.default.svc
     namespace: elastic-stack
