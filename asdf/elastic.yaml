@@ -184,7 +184,7 @@ spec:
 
         eck-logstash:
           enabled: true
-          count:2
+          count: 2
           # This is required to be able to set the logstash
           # output of beats in a consistent manner.
           fullnameOverride: "logstash-ls-beats"
