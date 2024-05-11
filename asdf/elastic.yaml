@@ -213,10 +213,10 @@ spec:
                 }
                 output {
                   elasticsearch {
-                    hosts => [ "${ECK_ES_HOSTS}" ]
-                    user => "${ECK_ES_USER}"
-                    password => "${ECK_ES_PASSWORD}"
-                    ssl_certificate_authorities => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                    hosts => [ "${PROD_ES_ES_HOSTS}" ]
+                    user => "${PROD_ES_ES_HOSTS}"
+                    password => "${PROD_ES_ES_HOSTS}"
+                    ssl_certificate_authorities => "${PROD_ES_ES_SSL_CERTIFICATE_AUTHORITY}"
                   }
                 }
           services:
