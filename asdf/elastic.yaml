@@ -36,7 +36,7 @@ spec:
     targetRevision: 2.12.1
     helm:
       releaseName: eck-operator
-      value: |
+      values: |
         installCRDs: false
         createClusterScopedResources: false
         config:
@@ -67,7 +67,7 @@ spec:
     targetRevision: 0.10.0
     helm:
       releaseName: eck-stack
-      value: |
+      values: |
         # base: https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.12/deploy/eck-stack/examples/agent/fleet-agents.yaml
         eck-elasticsearch:
           enabled: true
